@@ -46,8 +46,14 @@ public class PersonConsoleApp {
 	public static void main(String[] args) {
 		// Utworzenie obiektu aplikacji konsolowej
 		// oraz uruchomienie głównej pętli aplikacji.
+		Person[] personTab=null;
+		try {
+			personTab = Person.readFromFileTab("osoby.txt");
+		}catch (PersonException e){
+			UI.printErrorMessage(e.getMessage());
+		}
 		PersonConsoleApp application = new PersonConsoleApp();
-		application.runMainLoop();
+		application.runMainLoop(personTab);
 	} 
 
 	
@@ -63,7 +69,7 @@ public class PersonConsoleApp {
 	 *         w której program się zatrzymuje aż do zakończenia
 	 *         działania za pomocą metody System.exit(0); 
 	 */
-	public void runMainLoop() {
+	public void runMainLoop(Person[] personTab) {
 		UI.printMessage(GREETING_MESSAGE);
 
 		while (true) {
@@ -99,7 +105,6 @@ public class PersonConsoleApp {
 					Person.printToFile(file_name, currentPerson);
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
 				}
-
 					break;
 				case 0:
 					// zakończenie działania programu

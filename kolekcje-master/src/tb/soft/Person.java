@@ -201,6 +201,24 @@ public class Person {
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}	
 	}
+
+	public static Person[] readFromFileTab(BufferedReader reader) throws PersonException{
+		Person[] personTab = new Person[10];
+		for(int i =0; i<10; i++) {
+			try {
+				String line = reader.readLine();
+				String[] txt = line.split("#");
+				Person person = new Person(txt[0], txt[1]);
+				person.setBirthYear(txt[2]);
+				person.setJob(txt[3]);
+				System.out.println("Osoba to " + txt[0] + " " + txt[1] + " uruodzna: " + txt[2] + " pozycja " + txt[3]);
+				personTab[i]=person;
+			} catch (IOException e) {
+				throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
+			}
+		}
+		return personTab;
+	}
 	
 	
 	public static Person readFromFile(String file_name) throws PersonException {
@@ -211,6 +229,17 @@ public class Person {
 		} catch(IOException e){
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}	
+	}
+
+
+	public static Person[] readFromFileTab(String file_name) throws PersonException {
+		try (BufferedReader reader = new BufferedReader(new FileReader(new File(file_name)))) {
+			return Person.readFromFileTab(reader);
+		} catch (FileNotFoundException e){
+			throw new PersonException("Nie odnaleziono pliku " + file_name);
+		} catch(IOException e){
+			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
+		}
 	}
 	
 }  // koniec klasy Person

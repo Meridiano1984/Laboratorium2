@@ -1,1 +1,10 @@
-Michal#Shell#2001#Gość
+Michal#Shell#2000#Gość
+Marcel#Kloc#2000#Gość
+Karolina#Witczak#1977#Dyrektor
+Karolina#Witczak#1977#Nauczyciel
+Natalia#Kononowicz#2005#Nauczyciel
+Kacper#Suchodolski#2000#Kierownik
+Dominik#Rolek#1999#Gość
+Ivan#Rzymianin#2002#Gość
+Aleksandra#Jagiello#1984#Gość
+Karol#Mazurek#2000#Nauczyciel
