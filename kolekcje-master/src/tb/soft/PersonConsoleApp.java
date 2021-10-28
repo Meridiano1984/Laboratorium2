@@ -24,7 +24,16 @@ public class PersonConsoleApp {
 			"3 - Modyfikuj dane osoby   \n" +
 			"4 - Wczytaj dane z pliku   \n" +
 			"5 - Zapisz dane do pliku   \n" +
-			"0 - Zakończ program        \n";	
+			"6 - Wyswietl elementy kolekcji\n" +
+			"7 - Dodanie do LinkedList\n" +
+			"8 - dodanie do ArrayList\n" +
+			"9 - Dodanie do HashSet\n" +
+			"10 -Dodanie do TreeSet\n" +
+			"11- Dodanie do HashMap\n" +
+			"12- Dodanie do TreeMap\n" +
+			"13- Dodanie do wszystkich jednoczesnie\n" +
+			"14- Wyswietl elementy kolekcji\n" +
+			"0 - Zakończ program        \n";
 	
 	private static final String CHANGE_MENU = 
 			"   Co zmienić?     \n" + 
@@ -46,14 +55,13 @@ public class PersonConsoleApp {
 	public static void main(String[] args) {
 		// Utworzenie obiektu aplikacji konsolowej
 		// oraz uruchomienie głównej pętli aplikacji.
-		Person[] personTab=null;
-		try {
-			personTab = Person.readFromFileTab("osoby.txt");
-		}catch (PersonException e){
-			UI.printErrorMessage(e.getMessage());
-		}
+		// DODANIE DANYCH DO KOLEKCJI Z PLIKU
+		Kolekcje kolekcje = new Kolekcje();
+		System.out.println("DANE WCZYTANE Z PLIKU");
+		Person.wyswietlaniePersonZPliku();
+		System.out.println("\n\n\n");
 		PersonConsoleApp application = new PersonConsoleApp();
-		application.runMainLoop(personTab);
+		application.runMainLoop(kolekcje);
 	} 
 
 	
@@ -69,8 +77,11 @@ public class PersonConsoleApp {
 	 *         w której program się zatrzymuje aż do zakończenia
 	 *         działania za pomocą metody System.exit(0); 
 	 */
-	public void runMainLoop(Person[] personTab) {
-		UI.printMessage(GREETING_MESSAGE);
+	public void runMainLoop(Kolekcje kolekcje) {
+//		UI.printMessage(GREETING_MESSAGE);
+//		Person.wyswietlaniePersonZPliku();
+
+
 
 		while (true) {
 			UI.clearConsole();
@@ -105,6 +116,30 @@ public class PersonConsoleApp {
 					Person.printToFile(file_name, currentPerson);
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
 				}
+					break;
+				case 6:
+							kolekcje.wyswietlanieElementowKolekcji(kolekcje);
+					break;
+				case 7:
+							kolekcje.dodawnieNowegoPersonDoLinkedList(currentPerson,kolekcje.getPersonLinkedList());
+					break;
+				case 8: 	kolekcje.dodawnieNowegoPersonDoArrayList(currentPerson,kolekcje.getPersonArrayList());
+					break;
+				case 9: 	kolekcje.dodawnieNowegoPersonDoHashSet(currentPerson,kolekcje.getPersonHashSet());
+					break;
+				case 10: 	kolekcje.dodawnieNowegoPersonDoTreeSet(currentPerson,kolekcje.getPersonTreeSet());
+					break;
+				case 11:	kolekcje.dodawnieNowegoPersonDoHashMap(currentPerson,kolekcje.getPersonHashMap());
+					break;
+				case 12: 	kolekcje.dodawnieNowegoPersonDoTreeMap(currentPerson,kolekcje.getPersonTreeMap());
+					break;
+				case 13:
+						kolekcje.dodawnieNowegoPersonDoLinkedList(currentPerson,kolekcje.getPersonLinkedList());
+					 	kolekcje.dodawnieNowegoPersonDoArrayList(currentPerson,kolekcje.getPersonArrayList());
+						kolekcje.dodawnieNowegoPersonDoHashSet(currentPerson,kolekcje.getPersonHashSet());
+						kolekcje.dodawnieNowegoPersonDoTreeSet(currentPerson,kolekcje.getPersonTreeSet());
+						kolekcje.dodawnieNowegoPersonDoHashMap(currentPerson,kolekcje.getPersonHashMap());
+						kolekcje.dodawnieNowegoPersonDoTreeMap(currentPerson,kolekcje.getPersonTreeMap());
 					break;
 				case 0:
 					// zakończenie działania programu
