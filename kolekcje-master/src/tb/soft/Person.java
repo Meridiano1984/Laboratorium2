@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 
 
 /*
@@ -211,7 +212,7 @@ public class Person {
 				Person person = new Person(txt[0], txt[1]);
 				person.setBirthYear(txt[2]);
 				person.setJob(txt[3]);
-				System.out.println("Osoba to " + txt[0] + " " + txt[1] + " uruodzna: " + txt[2] + " pozycja " + txt[3]);
+				System.out.println("Osoba to " + txt[0] + " " + txt[1] + " urodzna: " + txt[2] + " pozycja " + txt[3]);
 				personTab[i]=person;
 			} catch (IOException e) {
 				throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
@@ -241,5 +242,20 @@ public class Person {
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}
 	}
-	
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Person person = (Person) o;
+		return birthYear == person.birthYear && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && job == person.job;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, birthYear, job);
+	}
+
+
 }  // koniec klasy Person
