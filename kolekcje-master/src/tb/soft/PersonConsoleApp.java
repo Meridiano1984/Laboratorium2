@@ -32,7 +32,12 @@ public class PersonConsoleApp {
 			"11- Dodanie do HashMap\n" +
 			"12- Dodanie do TreeMap\n" +
 			"13- Dodanie do wszystkich jednoczesnie\n" +
-			"14- Wyswietl elementy kolekcji\n" +
+			"14- usuwanie z LinkedList\n" +
+			"15- usuwanie z ArrayList\n" +
+			"16- usuwanie z HashSet\n" +
+			"17- usuwanie z TreeSet\n" +
+			"18- usuwanie z HashMap\n" +
+			"19- usuwanie z TreeMap\n" +
 			"0 - Zakończ program        \n";
 	
 	private static final String CHANGE_MENU = 
@@ -141,6 +146,18 @@ public class PersonConsoleApp {
 						kolekcje.dodawnieNowegoPersonDoHashMap(currentPerson,kolekcje.getPersonHashMap());
 						kolekcje.dodawnieNowegoPersonDoTreeMap(currentPerson,kolekcje.getPersonTreeMap());
 					break;
+				case 14:	kolekcje.usuwaniePersonZLinkedList(kolekcje.getPersonLinkedList());
+						break;
+				case 15:	kolekcje.usuwaniePersonZArrayList(kolekcje.getPersonArrayList());
+						break;
+				case 16:	kolekcje.usuwaniePersonZHashSet(kolekcje.getPersonHashSet());
+						break;
+				case 17:	kolekcje.usuwaniePersonZTreeSet(kolekcje.getPersonTreeSet());
+						break;
+				case 18:	kolekcje.usuwaniePersonZHashMap(kolekcje.getPersonHashMap());
+						break;
+				case 19:	kolekcje.usuwaniePersonZTreeMap(kolekcje.getPersonTreeMap());
+						break;
 				case 0:
 					// zakończenie działania programu
 					UI.printInfoMessage("\nProgram zakończył działanie!");

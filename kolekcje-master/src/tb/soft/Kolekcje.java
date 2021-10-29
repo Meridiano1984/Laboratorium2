@@ -168,7 +168,7 @@ public class Kolekcje {
 
     // METODY WYSWETLAJACE DANE ZAWARTOSC ATRYBUTOW KOLEKCJI
     public void wyswietlanieElementowLinkedList(LinkedList<Person> personLinkedList){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy LinkedList");
         for (Person person: personLinkedList) {
             System.out.println(i + "." + person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
@@ -177,7 +177,7 @@ public class Kolekcje {
     }
 
     public void wyswietlanieElementowArrayList(ArrayList<Person> personArrayList){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy ArrayList");
         for(Person person: personArrayList){
             System.out.println(i + "." + person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
@@ -186,7 +186,7 @@ public class Kolekcje {
     }
 
     public void wyswietlanieElementowHashSet(HashSet<Person> personHashSet){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy HashSet");
         for(Person person: personHashSet){
             System.out.println(i + "." + person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
@@ -195,7 +195,7 @@ public class Kolekcje {
     }
 
     public void wyswietlanieElementowTreeSet(TreeSet<Person> personTreeSet){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy TreeSet");
         for(Person person: personTreeSet){
             System.out.println(i + "." + person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
@@ -204,19 +204,32 @@ public class Kolekcje {
     }
 
     public static void wyswietlanieElementowHashMap(HashMap<String,Person> personHashMap){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy HashMap");
-        personHashMap.entrySet().forEach(stringPersonEntry -> {
-            System.out.println(i + "." + stringPersonEntry.getValue().getFirstName() + " " + stringPersonEntry.getValue().getLastName() + " " + stringPersonEntry.getValue().getBirthYear() + " " + stringPersonEntry.getValue().getJob());
-        });
+        for(String key : personHashMap.keySet()){
+            Person person = personHashMap.get(key);
+            System.out.println(i + ".Klucz: " + person.getLastName());
+            System.out.println(person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
+            i++;
+        }
+
+//        personHashMap.entrySet().forEach(stringPersonEntry -> {
+//            System.out.println(i + "." + stringPersonEntry.getValue().getFirstName() + " " + stringPersonEntry.getValue().getLastName() + " " + stringPersonEntry.getValue().getBirthYear() + " " + stringPersonEntry.getValue().getJob());
+//        });
     }
 
     public static void wyswietlanieElementowTreeMap(TreeMap<String,Person> personTreeMap){
-        int i=1;
+        int i=0;
         System.out.println("\nElementy TreeMap");
-        personTreeMap.entrySet().forEach(stringPersonEntry -> {
-            System.out.println(i + "." + stringPersonEntry.getValue().getFirstName() + " " + stringPersonEntry.getValue().getLastName() + " " + stringPersonEntry.getValue().getBirthYear() + " " + stringPersonEntry.getValue().getJob());
-        });
+        for(String key : personTreeMap.keySet()){
+            Person person = personTreeMap.get(key);
+            System.out.println(i + ".Klucz: " + person.getLastName());
+            System.out.println(person.getFirstName() + " " + person.getLastName() + " " + person.getBirthYear() + " " + person.getJob() );
+            i++;
+        }
+//        personTreeMap.entrySet().forEach(stringPersonEntry -> {
+//            System.out.println(i + "." + stringPersonEntry.getValue().getFirstName() + " " + stringPersonEntry.getValue().getLastName() + " " + stringPersonEntry.getValue().getBirthYear() + " " + stringPersonEntry.getValue().getJob());
+//        });
     }
 
     public void wyswietlanieElementowKolekcji(Kolekcje kolekcja){
@@ -246,6 +259,54 @@ public class Kolekcje {
 
     public void dodawnieNowegoPersonDoTreeMap(Person person, TreeMap<String,Person> kolekcje){
         kolekcje.put(person.getLastName(),person);
+    }
+
+    public void usuwaniePersonZArrayList(ArrayList<Person> personArrayList){
+        Scanner scanner = new Scanner(System.in);
+        int index;
+        System.out.print("Podaj nr indeksu osoby ktora chcesz usuac: ");
+        index = scanner.nextInt();
+        personArrayList.remove(index);
+    }
+
+    public void usuwaniePersonZLinkedList(LinkedList<Person> personLinkedList){
+        Scanner scanner = new Scanner(System.in);
+        int index;
+        System.out.print("Podaj nr indeksu osoby ktora chcesz usuac: ");
+        index = scanner.nextInt();
+        personLinkedList.remove(index);
+    }
+
+    public void usuwaniePersonZHashSet(HashSet<Person> personHashSet){
+        Scanner scanner = new Scanner(System.in);
+        int index;
+        System.out.print("Podaj nr indeksu osoby ktora chcesz usuac: ");
+        index = scanner.nextInt();
+        personHashSet.remove(index);
+    }
+
+    public void usuwaniePersonZTreeSet(TreeSet<Person> personTreeSet){
+        Scanner scanner = new Scanner(System.in);
+        int index;
+        System.out.print("Podaj nr indeksu osoby ktora chcesz usuac: ");
+        index = scanner.nextInt();
+        personTreeSet.remove(index);
+    }
+
+    public void usuwaniePersonZHashMap(HashMap<String,Person> personHashMap){
+        Scanner scanner = new Scanner(System.in);
+        String klucz;
+        System.out.print("Podaj klucz warosci ktora chcesz usunac: ");
+        klucz=scanner.next();
+        personHashMap.remove(klucz);
+    }
+
+    public void usuwaniePersonZTreeMap(TreeMap<String,Person> treeMap){
+        Scanner scanner = new Scanner(System.in);
+        String klucz;
+        System.out.print("Podaj klucz warosci ktora chcesz usunac: ");
+        klucz=scanner.next();
+        treeMap.remove(klucz);
     }
 
 

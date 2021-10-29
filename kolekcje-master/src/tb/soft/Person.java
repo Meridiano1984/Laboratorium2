@@ -291,7 +291,7 @@ public class Person {
 		}
 	}
 
-
+//ZDEFINIOWANE METODY HASH AND EQUALS
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
